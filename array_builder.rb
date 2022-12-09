@@ -9,8 +9,9 @@ def array_builder(num_of_pages)
 
     name_on_page = parsed_page.css('.fb>a').map(&:text)
     prices_on_page = parsed_page.css('.price-box__price').map(&:text).map { |price| price.gsub(/[[:space:]]/, '').to_i }
+    discount_prices_on_page = parsed_page.css('.coupon-block__label--price').map(&:text).map { |price| price.gsub(/[[:space:]]/, '').to_i }
 
-    combined_array += name_on_page.zip(prices_on_page)
+    combined_array += name_on_page.zip(prices_on_page, discount_prices_on_page)
   end
 
   combined_array
