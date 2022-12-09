@@ -6,7 +6,7 @@ require_relative 'array_builder'
 
 def scraper(num_of_pages)
   CSV.open('trhaky.csv', 'w', headers: true) do |csv|
-    csv << ['Name', 'Price']
+    csv << ['Name', 'Price', 'Discount']
     array_builder(num_of_pages).each { |array| csv << array }
   end
 
